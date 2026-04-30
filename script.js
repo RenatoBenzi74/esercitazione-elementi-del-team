@@ -44,7 +44,7 @@ function raccogliDati() {
 function valida(data) {
   let valido = true;
 
-  if (!data.nomeGruppo || !data.contesto || !data.ruolo) {
+  if (!data.nomeGruppo || !data.ruolo) {
     valido = false;
   }
 
@@ -78,7 +78,6 @@ function salvaBozza() {
   });
   localStorage.setItem(DRAFT_KEY, JSON.stringify({
     nomeGruppo: data.nomeGruppo,
-    contesto: data.contesto,
     ruolo: data.ruolo,
     radioStates,
     noteStates
@@ -174,7 +173,6 @@ function costruisciPayload(data) {
   }).join('\n');
 
   return `Gruppo: ${data.nomeGruppo}
-Contesto: ${data.contesto}
 Ruolo osservatore: ${data.ruolo}
 
 Punteggi (scala 1-6):
@@ -223,7 +221,6 @@ document.getElementById('grigliaForm').addEventListener('submit', async function
     const json = await res.json();
     ultimaAnalisi = `ANALISI GRIGLIA DI OSSERVAZIONE
 Gruppo: ${data.nomeGruppo}
-Contesto: ${data.contesto}
 Ruolo: ${data.ruolo}
 Data: ${new Date().toLocaleDateString('it-IT')}
 
