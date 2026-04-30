@@ -21,7 +21,6 @@ function toggleIstruzioni() {
 function raccogliDati() {
   const data = {
     nomeGruppo: document.getElementById('nomeGruppo').value.trim(),
-    contesto: document.getElementById('contestoOsservato').value.trim(),
     ruolo: document.getElementById('ruoloCompilatore').value.trim(),
     indicatori: []
   };
