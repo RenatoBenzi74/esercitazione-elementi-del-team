@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Griglia Osservazione Gruppo</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400;0,700;0,900;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header class="site-header">
+    <div class="header-deco">
+      <span class="deco deco-star">✦</span>
+      <span class="deco deco-circle"></span>
+      <span class="deco deco-rect"></span>
+    </div>
+    <div class="header-content">
+      <p class="header-label">Strumento formativo</p>
+      <h1 class="header-title">Griglia di Osservazione<br><em>del Gruppo</em></h1>
+    </div>
+    <div class="header-deco right">
+      <span class="deco deco-hex"></span>
+      <span class="deco deco-spiral">◌</span>
+      <span class="deco deco-dot"></span>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- ISTRUZIONI -->
+    <section class="istruzioni-box">
+      <button class="toggle-istruzioni" onclick="toggleIstruzioni()" aria-expanded="false">
+        <span>📋 Istruzioni per l'uso</span>
+        <span class="toggle-arrow">▾</span>
+      </button>
+      <div class="istruzioni-body" id="istruzioniBody" hidden>
+        <ul>
+          <li>Questa griglia serve per osservare la frequenza con cui il gruppo agisce determinati comportamenti.</li>
+          <li>L'osservazione riguarda il <strong>comportamento collettivo</strong>, non i singoli individui.</li>
+          <li>Assegna un punteggio da <strong>1 (mai)</strong> a <strong>6 (sempre)</strong> in base a quanto spesso il comportamento è stato osservato.</li>
+          <li>Considera il comportamento prevalente nel gruppo, non i casi isolati.</li>
+          <li>Evita il punteggio neutro: scegli sempre una posizione chiara tra le sei disponibili.</li>
+          <li>Annota esempi concreti o situazioni rilevanti nella colonna Note.</li>
+        </ul>
+        <div class="scala-grid">
+          <div class="scala-item"><span class="scala-num">1</span><span class="scala-label">Mai</span><span class="scala-desc">Il comportamento non è mai stato osservato.</span></div>
+          <div class="scala-item"><span class="scala-num">2</span><span class="scala-label">Raramente</span><span class="scala-desc">Comportamento molto sporadico, osservato solo in pochi momenti e da pochi membri.</span></div>
+          <div class="scala-item"><span class="scala-num">3</span><span class="scala-label">Occasionalmente</span><span class="scala-desc">Comportamento osservato in alcuni momenti, ma non diffuso nel gruppo.</span></div>
+          <div class="scala-item"><span class="scala-num">4</span><span class="scala-label">Frequentemente</span><span class="scala-desc">Comportamento ricorrente, messo in atto dalla maggior parte del gruppo in più momenti.</span></div>
+          <div class="scala-item"><span class="scala-num">5</span><span class="scala-label">Molto frequentemente</span><span class="scala-desc">Comportamento quasi sempre presente, agito costantemente da quasi tutti i membri.</span></div>
+          <div class="scala-item"><span class="scala-num">6</span><span class="scala-label">Sempre</span><span class="scala-desc">Comportamento sistematico e radicato, condiviso da tutto il gruppo.</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FORM INTESTAZIONE -->
+    <section class="intestazione-section">
+      <h2 class="section-mini-title">Contesto dell'osservazione</h2>
+      <div class="intestazione-grid">
+        <div class="field-group">
+          <label for="nomeGruppo">Nome del gruppo osservato <span class="req">*</span></label>
+          <input type="text" id="nomeGruppo" placeholder="es. Team Progetto Aurora" maxlength="100" />
+        </div>
+        <div class="field-group">
+          <label for="contestoOsservato">Contesto osservato <span class="req">*</span></label>
+          <input type="text" id="contestoOsservato" placeholder="es. Riunione settimanale del 28/04" maxlength="150" />
+        </div>
+        <div class="field-group">
+          <label for="ruoloCompilatore">Ruolo di chi compila <span class="req">*</span></label>
+          <input type="text" id="ruoloCompilatore" placeholder="es. Coordinatore, Facilitatore…" maxlength="100" />
+        </div>
+      </div>
+    </section>
+
+    <!-- GRIGLIA -->
+    <form id="grigliaForm" novalidate>
+
+      <!-- IDENTITÀ -->
+      <section class="elemento-section elem-identita" data-elemento="Identità">
+        <div class="elemento-header">
+          <div class="elemento-deco">
+            <span class="edeco edeco-star">✦</span>
+            <span class="edeco edeco-circle"></span>
+          </div>
+          <div>
+            <span class="elemento-tag">01</span>
+            <h2 class="elemento-title">Identità</h2>
+          </div>
+        </div>
+        <div class="indicatori-list">
+          <div class="indicatore-card" data-indicatore="I membri esprimono un chiaro senso di appartenenza al gruppo.">
+            <p class="indicatore-text">I membri esprimono un chiaro senso di appartenenza al gruppo.</p>
+            <div class="scala-row" role="group" aria-label="Punteggio">
+              <label class="scala-btn"><input type="radio" name="ind_identita_1" value="1"><span>1<small>Mai</small></span></label>
+              <label class="scala-btn"><input type="radio" name="ind_identita_1" value="2"><span>2<small>Raramente</small></span></label>
+              <label class="scala-btn"><input type="radio" name="ind_identita_1" value="3"><span>3<small>Occas.</small></span></label>
+              <label class="scala-btn"><input type="radio" name="ind_identita_1" value="4"><span>4<small>Freq.</small></span></label>
+              <label class="scala-btn"><input type="radio" name="ind_identita_1" value="5"><span>5<small>Molto</small></span></label>
+              <label class="scala-btn"><input type="radio" name="ind_identita_1" value="6"><span>6<small>Sempre</small></span></label>
+            </div>
+            <textarea class="note-field" placeholder="Note facoltative (max 280 caratteri)…" maxlength="280" rows="2"></textarea>
+          </div>
+          <div class="indicatore-card" data-indicatore="I valori e la missione dell'associazione vengono esplicitamente richiamati.">
+            <p class="indicatore-text">I valori e la missione dell'associazione vengono esplicitamente richiamati.</p>
+            <div class="scala-row" role="group">
+              <label class="scala-btn"><input type="radio" name="ind_identita_2" value="1"><span>1<small>Mai</small></span></label>
+              <label class="scala-btn"><input type="radio" name="ind_identita_2" value="2"><span>2<small>Raramente</small></span></label>
+              <label class="scala-btn"><input type="radio" name="ind_identita_2" value="3"><span>3<small>Occas.</small></span></label>
+              <label class="scala-btn"><input type="radio" name="ind_identita_2" value="4"><span>4<small>Freq.</small></span></label>
+              <label class="scala-btn"><input type="radio" name="ind_identita_2" value="5"><span>5<small>Molto</small></span></label>
+              <label class="scala-btn"><input type="radio" name="ind_identita_2" value="6"><span>6<small>Sempre</small></span></label>
+            </div>
+            <textarea class="note-field" placeholder="Note facoltative (max 280 caratteri)…" maxlength="280" rows="2"></textarea>
+          </div>
+          <div class="indicatore-card" data-indicatore="Il gruppo riconosce la propria utilità e il contributo al contesto più ampio.">
+            <p class="indicatore-text">Il gruppo riconosce la propria utilità e il contributo al contesto più ampio.</p>
+            <div class="scala-row" role="group">
+              <label class="scala-btn"><input type="radio" name="ind_identita_3" value="1"><span>1<small>Mai</small></span></label>
+              <label class="scala-btn"><input type="radio" name="ind_identita_3" value="2"><span>2<small>Raramente</small></span></label>
+              <label class="scala-btn"><input type="radio" name="ind_identita_3" value="3"><span>3<small>Occas.</small></span></label>
+              <label class="scala-btn"><input type="radio" name="ind_identita_3" value="4"><span>4<small>Freq.</small></span></label>
+              <label class="scala-btn"><input type="radio" name="ind_identita_3" value="5"><span>5<small>Molto</small></span></label>
+              <label class="scala-btn"><input type="radio" name="ind_identita_3" value="6"><span>6<small>Sempre</small></span></label>
+            </div>
+            <textarea class="note-field" placeholder="Note facoltative (max 280 caratteri)…" maxlength="280" rows="2"></textarea>
+          </div>
+          <div class="indicatore-card" data-indicatore="È presente un linguaggio comune e coerente con l'identità associativa.">
+            <p class="indicatore-text">È presente un linguaggio comune e coerente con l'identità associativa.</p>
+            <div class="scala-row" role="group">
+              <label class="scala-btn"><input type="radio" name="ind_identita_4" value="1"><span>1<small>Mai</small></span></label>
+              <label class="scala-btn"><input type="radio" name="ind_identita_4" value="2"><span>2<small>Raramente</small></span></label>
+              <label class="scala-btn"><input type="radio" name="ind_identita_4" value="3"><span>3<small>Occas.</small></span></label>
+              <label class="scala-btn"><input type="radio" name="ind_identita_4" value="4"><span>4<small>Freq.</small></span></label>
+              <label class="scala-btn"><input type="radio" name="ind_identita_4" value="5"><span>5<small>Molto</small></span></label>
+              <label class="scala-btn"><input type="radio" name="ind_identita_4" value="6"><span>6<small>Sempre</small></span></label>
+            </div>
+            <textarea class="note-field" placeholder="Note facoltative (max 280 caratteri)…" maxlength="280" rows="2"></textarea>
+          </div>
+          <div class="indicatore-card" data-indicatore="I membri si percepiscono parte di una storia e di un percorso condiviso.">
+            <p class="indicatore-text">I membri si percepiscono parte di una storia e di un percorso condiviso.</p>
+            <div class="scala-row" role="group">
+              <label class="scala-btn"><input type="radio" name="ind_identita_5" value="1"><span>1<small>Mai</small></span></label>
+              <label class="scala-btn"><input type="radio" name="ind_identita_5" value="2"><span>2<small>Raramente</small></span></label>
+              <label class="scala-btn"><input type="radio" name="ind_identita_5" value="3"><span>3<small>Occas.</small></span></label>
+              <label class="scala-btn"><input type="radio" name="ind_identita_5" value="4"><span>4<small>Freq.</small></span></label>
+              <label class="scala-btn"><input type="radio" name="ind_identita_5" value="5"><span>5<small>Molto</small></span></label>
+              <label class="scala-btn"><input type="radio" name="ind_identita_5" value="6"><span>6<small>Sempre</small></span></label>
+            </div>
+            <textarea class="note-field" placeholder="Note facoltative (max 280 caratteri)…" maxlength="280" rows="2"></textarea>
+          </div>
+        </div>
+      </section>
+
+      <!-- ORGANIZZAZIONE -->
+      <section class="elemento-section elem-organizzazione" data-elemento="Organizzazione">
+        <div class="elemento-header">
+          <div class="elemento-deco">
+            <span class="edeco edeco-hex">⬡</span>
+            <span class="edeco edeco-rect"></span>
+          </div>
+          <div>
+            <span class="elemento-tag">02</span>
+            <h2 class="elemento-title">Organizzazione</h2>
+          </div>
+        </div>
+        <div class="indicatori-list">
+          <div class="indicatore-card" data-indicatore="I ruoli e le responsabilità sono chiari e condivisi.">
+            <p class="indicatore-text">I ruoli e le responsabilità sono chiari e condivisi.</p>
+            <div class="scala-row" role="group">
+              <label class="scala-btn"><input type="radio" name="ind_org_1" value="1"><span>1<small>Mai</small></span></label>
+              <label class="scala-btn"><input type="radio" name="ind_org_1" value="2"><span>2<small>Raramente</small></span></label>
+              <label class="scala-btn"><input type="radio" name="ind_org_1" value="3"><span>3<small>Occas.</small></span></label>
+              <label class="scala-btn"><input type="radio" name="ind_org_1" value="4"><span>4<small>Freq.</small></span></label>
+              <label class="scala-btn"><input type="radio" name="ind_org_1" value="5"><span>5<small>Molto</small></span></label>
+              <label class="scala-btn"><input type="radio" name="ind_org_1" value="6"><span>6<small>Sempre</small></span></label>
+            </div>
+            <textarea class="note-field" placeholder="Note facoltative (max 280 caratteri)…" maxlength="280" rows="2"></textarea>
+          </div>
+          <div class="indicatore-card" data-indicatore="Le attività sono pianificate e monitorate in modo ordinato.">
+            <p class="indicatore-text">Le attività sono pianificate e monitorate in modo ordinato.</p>
+            <div class="scala-row" role="group">
+              <label class="scala-btn"><input type="radio" name="ind_org_2" value="1"><span>1<small>Mai</small></span></label>
+              <label class="scala-btn"><input type="radio" name="ind_org_2" value="2"><span>2<small>Raramente</small></span></label>
+              <label class="scala-btn"><input type="radio" name="ind_org_2" value="3"><span>3<small>Occas.</small></span></label>
+              <label class="scala-btn"><input type="radio" name="ind_org_2" value="4"><span>4<small>Freq.</small></span></label>
+              <label class="scala-btn"><input type="radio" name="ind_org_2" value="5"><span>5<small>Molto</small></span></label>
+              <label class="scala-btn"><input type="radio" name="ind_org_2" value="6"><span>6<small>Sempre</small></span></label>
+            </div>
+            <textarea class="note-field" placeholder="Note facoltative (max 280 caratteri)…" maxlength="280" rows="2"></textarea>
+          </div>
+          <div class="indicatore-card" data-indicatore="Le decisioni operative vengono prese in modo trasparente.">
+            <p class="indicatore-text">Le decisioni operative vengono prese in modo trasparente.</p>
+            <div class="scala-row" role="group">
+              <label class="scala-btn"><input type="radio" name="ind_org_3" value="1"><span>1<small>Mai</small></span></label>
+              <label class="scala-btn"><input type="radio" name="ind_org_3" value="2"><span>2<small>Raramente</small></span></label>
+              <label class="scala-btn"><input type="radio" name="ind_org_3" value="3"><span>3<small>Occas.</small></span></label>
+              <label class="scala-btn"><input type="radio" name="ind_org_3" value="4"><span>4<small>Freq.</small></span></label>
+              <label class="scala-btn"><input type="radio" name="ind_org_3" value="5"><span>5<small>Molto</small></span></label>
+              <label class="scala-btn"><input type="radio" name="ind_org_3" value="6"><span>6<small>Sempre</small></span></label>
+            </div>
+            <textarea class="note-field" placeholder="Note facoltative (max 280 caratteri)…" maxlength="280" rows="2"></textarea>
+          </div>
+          <div class="indicatore-card" data-indicatore="Il gruppo gestisce in autonomia le priorità senza bisogno di continua supervisione.">
+            <p class="indicatore-text">Il gruppo gestisce in autonomia le priorità senza bisogno di continua supervisione.</p>
+            <div class="scala-row" role="group">
+              <label class="scala-btn"><input type="radio" name="ind_org_4" value="1"><span>1<small>Mai</small></span></label>
+              <label class="scala-btn"><input type="radio" name="ind_org_4" value="2"><span>2<small>Raramente</small></span></label>
+              <label class="scala-btn"><input type="radio" name="ind_org_4" value="3"><span>3<small>Occas.</small></span></label>
+              <label class="scala-btn"><input type="radio" name="ind_org_4" value="4"><span>4<small>Freq.</small></span></label>
+              <label class="scala-btn"><input type="radio" name="ind_org_4" value="5"><span>5<small>Molto</small></span></label>
+              <label class="scala-btn"><input type="radio" name="ind_org_4" value="6"><span>6<small>Sempre</small></span></label>
+            </div>
+            <textarea class="note-field" placeholder="Note facoltative (max 280 caratteri)…" maxlength="280" rows="2"></textarea>
+          </div>
+          <div class="indicatore-card" data-indicatore="I membri rispettano tempi, ruoli e impegni concordati.">
+            <p class="indicatore-text">I membri rispettano tempi, ruoli e impegni concordati.</p>
+            <div class="scala-row" role="group">
+              <label class="scala-btn"><input type="radio" name="ind_org_5" value="1"><span>1<small>Mai</small></span></label>
+              <label class="scala-btn"><input type="radio" name="ind_org_5" value="2"><span>2<small>Raramente</small></span></label>
+              <label class="scala-btn"><input type="radio" name="ind_org_5" value="3"><span>3<small>Occas.</small></span></label>
+              <label class="scala-btn"><input type="radio" name="ind_org_5" value="4"><span>4<small>Freq.</small></span></label>
+              <label class="scala-btn"><input type="radio" name="ind_org_5" value="5"><span>5<small>Molto</small></span></label>
+              <label class="scala-btn"><input type="radio" name="ind_org_5" value="6"><span>6<small>Sempre</small></span></label>
+            </div>
+            <textarea class="note-field" placeholder="Note facoltative (max 280 caratteri)…" maxlength="280" rows="2"></textarea>
+          </div>
+        </div>
+      </section>
+
+      <!-- COMUNICAZIONE -->
+      <section class="elemento-section elem-comunicazione" data-elemento="Comunicazione">
+        <div class="elemento-header">
+          <div class="elemento-deco">
+            <span class="edeco edeco-spiral">◌</span>
+            <span class="edeco edeco-dot"></span>
+          </div>
+          <div>
+            <span class="elemento-tag">03</span>
+            <h2 class="elemento-title">Comunicazione</h2>
+          </div>
+        </div>
+        <div class="indicatori-list">
+          <div class="indicatore-card" data-indicatore="Le informazioni circolano in modo chiaro e accessibile a tutti.">
+            <p class="indicatore-text">Le informazioni circolano in modo chiaro e accessibile a tutti.</p>
+            <div class="scala-row" role="group">
+              <label class="scala-btn"><input type="radio" name="ind_com_1" value="1"><span>1<small>Mai</small></span></label>
+              <label class="scala-btn"><input type="radio" name="ind_com_1" value="2"><span>2<small>Raramente</small></span></label>
+              <label class="scala-btn"><input type="radio" name="ind_com_1" value="3"><span>3<small>Occas.</small></span></label>
+              <label class="scala-btn"><input type="radio" name="ind_com_1" value="4"><span>4<small>Freq.</small></span></label>
+              <label class="scala-btn"><input type="radio" name="ind_com_1" value="5"><span>5<small>Molto</small></span></label>
+              <label class="scala-btn"><input type="radio" name="ind_com_1" value="6"><span>6<small>Sempre</small></span></label>
+            </div>
+            <textarea class="note-field" placeholder="Note facoltative (max 280 caratteri)…" maxlength="280" rows="2"></textarea>
+          </div>
+          <div class="indicatore-card" data-indicatore="I membri si ascoltano con attenzione e mostrano interesse reciproco.">
+            <p class="indicatore-text">I membri si ascoltano con attenzione e mostrano interesse reciproco.</p>
+            <div class="scala-row" role="group">
+              <label class="scala-btn"><input type="radio" name="ind_com_2" value="1"><span>1<small>Mai</small></span></label>
+              <label class="scala-btn"><input type="radio" name="ind_com_2" value="2"><span>2<small>Raramente</small></span></label>
+              <label class="scala-btn"><input type="radio" name="ind_com_2" value="3"><span>3<small>Occas.</small></span></label>
+              <label class="scala-btn"><input type="radio" name="ind_com_2" value="4"><span>4<small>Freq.</small></span></label>
+              <label class="scala-btn"><input type="radio" name="ind_com_2" value="5"><span>5<small>Molto</small></span></label>
+              <label class="scala-btn"><input type="radio" name="ind_com_2" value="6"><span>6<small>Sempre</small></span></label>
+            </div>
+            <textarea class="note-field" placeholder="Note facoltative (max 280 caratteri)…" maxlength="280" rows="2"></textarea>
+          </div>
+          <div class="indicatore-card" data-indicatore="Il feedback è praticato con rispetto e regolarità.">
+            <p class="indicatore-text">Il feedback è praticato con rispetto e regolarità.</p>
+            <div class="scala-row" role="group">
+              <label class="scala-btn"><input type="radio" name="ind_com_3" value="1"><span>1<small>Mai</small></span></label>
+              <label class="scala-btn"><input type="radio" name="ind_com_3" value="2"><span>2<small>Raramente</small></span></label>
+              <label class="scala-btn"><input type="radio" name="ind_com_3" value="3"><span>3<small>Occas.</small></span></label>
+              <label class="scala-btn"><input type="radio" name="ind_com_3" value="4"><span>4<small>Freq.</small></span></label>
+              <label class="scala-btn"><input type="radio" name="ind_com_3" value="5"><span>5<small>Molto</small></span></label>
+              <label class="scala-btn"><input type="radio" name="ind_com_3" value="6"><span>6<small>Sempre</small></span></label>
+            </div>
+            <textarea class="note-field" placeholder="Note facoltative (max 280 caratteri)…" maxlength="280" rows="2"></textarea>
+          </div>
+          <div class="indicatore-card" data-indicatore="I conflitti cognitivi vengono gestiti come occasioni di apprendimento.">
+            <p class="indicatore-text">I conflitti cognitivi vengono gestiti come occasioni di apprendimento.</p>
+            <div class="scala-row" role="group">
+              <label class="scala-btn"><input type="radio" name="ind_com_4" value="1"><span>1<small>Mai</small></span></label>
+              <label class="scala-btn"><input type="radio" name="ind_com_4" value="2"><span>2<small>Raramente</small></span></label>
+              <label class="scala-btn"><input type="radio" name="ind_com_4" value="3"><span>3<small>Occas.</small></span></label>
+              <label class="scala-btn"><input type="radio" name="ind_com_4" value="4"><span>4<small>Freq.</small></span></label>
+              <label class="scala-btn"><input type="radio" name="ind_com_4" value="5"><span>5<small>Molto</small></span></label>
+              <label class="scala-btn"><input type="radio" name="ind_com_4" value="6"><span>6<small>Sempre</small></span></label>
+            </div>
+            <textarea class="note-field" placeholder="Note facoltative (max 280 caratteri)…" maxlength="280" rows="2"></textarea>
+          </div>
+          <div class="indicatore-card" data-indicatore="Il linguaggio del gruppo è inclusivo e orientato alla collaborazione.">
+            <p class="indicatore-text">Il linguaggio del gruppo è inclusivo e orientato alla collaborazione.</p>
+            <div class="scala-row" role="group">
+              <label class="scala-btn"><input type="radio" name="ind_com_5" value="1"><span>1<small>Mai</small></span></label>
+              <label class="scala-btn"><input type="radio" name="ind_com_5" value="2"><span>2<small>Raramente</small></span></label>
+              <label class="scala-btn"><input type="radio" name="ind_com_5" value="3"><span>3<small>Occas.</small></span></label>
+              <label class="scala-btn"><input type="radio" name="ind_com_5" value="4"><span>4<small>Freq.</small></span></label>
+              <label class="scala-btn"><input type="radio" name="ind_com_5" value="5"><span>5<small>Molto</small></span></label>
+              <label class="scala-btn"><input type="radio" name="ind_com_5" value="6"><span>6<small>Sempre</small></span></label>
+            </div>
+            <textarea class="note-field" placeholder="Note facoltative (max 280 caratteri)…" maxlength="280" rows="2"></textarea>
+          </div>
+        </div>
+      </section>
+
+      <!-- ATTEGGIAMENTO PROPOSITIVO -->
+      <section class="elemento-section elem-atteggiamento" data-elemento="Atteggiamento propositivo e cultura dell'errore">
+        <div class="elemento-header">
+          <div class="elemento-deco">
+            <span class="edeco edeco-half"></span>
+            <span class="edeco edeco-star">✦</span>
+          </div>
+          <div>
+            <span class="elemento-tag">04</span>
+            <h2 class="elemento-title">Atteggiamento propositivo<br><em>e cultura dell'errore</em></h2>
+          </div>
+        </div>
+        <div class="indicatori-list">
+          <div class="indicatore-card" data-indicatore="I membri propongono idee e soluzioni senza timore di giudizio.">
+            <p class="indicatore-text">I membri propongono idee e soluzioni senza timore di giudizio.</p>
+            <div class="scala-row" role="group">
+              <label class="scala-btn"><input type="radio" name="ind_att_1" value="1"><span>1<small>Mai</small></span></label>
+              <label class="scala-btn"><input type="radio" name="ind_att_1" value="2"><span>2<small>Raramente</small></span></label>
+              <label class="scala-btn"><input type="radio" name="ind_att_1" value="3"><span>3<small>Occas.</small></span></label>
+              <label class="scala-btn"><input type="radio" name="ind_att_1" value="4"><span>4<small>Freq.</small></span></label>
+              <label class="scala-btn"><input type="radio" name="ind_att_1" value="5"><span>5<small>Molto</small></span></label>
+              <label class="scala-btn"><input type="radio" name="ind_att_1" value="6"><span>6<small>Sempre</small></span></label>
+            </div>
+            <textarea class="note-field" placeholder="Note facoltative (max 280 caratteri)…" maxlength="280" rows="2"></textarea>
+          </div>
+          <div class="indicatore-card" data-indicatore="L'errore è trattato come opportunità di apprendimento.">
+            <p class="indicatore-text">L'errore è trattato come opportunità di apprendimento.</p>
+            <div class="scala-row" role="group">
+              <label class="scala-btn"><input type="radio" name="ind_att_2" value="1"><span>1<small>Mai</small></span></label>
+              <label class="scala-btn"><input type="radio" name="ind_att_2" value="2"><span>2<small>Raramente</small></span></label>
+              <label class="scala-btn"><input type="radio" name="ind_att_2" value="3"><span>3<small>Occas.</small></span></label>
+              <label class="scala-btn"><input type="radio" name="ind_att_2" value="4"><span>4<small>Freq.</small></span></label>
+              <label class="scala-btn"><input type="radio" name="ind_att_2" value="5"><span>5<small>Molto</small></span></label>
+              <label class="scala-btn"><input type="radio" name="ind_att_2" value="6"><span>6<small>Sempre</small></span></label>
+            </div>
+            <textarea class="note-field" placeholder="Note facoltative (max 280 caratteri)…" maxlength="280" rows="2"></textarea>
+          </div>
+          <div class="indicatore-card" data-indicatore="Il gruppo mostra curiosità e apertura verso il cambiamento.">
+            <p class="indicatore-text">Il gruppo mostra curiosità e apertura verso il cambiamento.</p>
+            <div class="scala-row" role="group">
+              <label class="scala-btn"><input type="radio" name="ind_att_3" value="1"><span>1<small>Mai</small></span></label>
+              <label class="scala-btn"><input type="radio" name="ind_att_3" value="2"><span>2<small>Raramente</small></span></label>
+              <label class="scala-btn"><input type="radio" name="ind_att_3" value="3"><span>3<small>Occas.</small></span></label>
+              <label class="scala-btn"><input type="radio" name="ind_att_3" value="4"><span>4<small>Freq.</small></span></label>
+              <label class="scala-btn"><input type="radio" name="ind_att_3" value="5"><span>5<small>Molto</small></span></label>
+              <label class="scala-btn"><input type="radio" name="ind_att_3" value="6"><span>6<small>Sempre</small></span></label>
+            </div>
+            <textarea class="note-field" placeholder="Note facoltative (max 280 caratteri)…" maxlength="280" rows="2"></textarea>
+          </div>
+          <div class="indicatore-card" data-indicatore="Le persone si offrono volontariamente per nuovi compiti o sfide.">
+            <p class="indicatore-text">Le persone si offrono volontariamente per nuovi compiti o sfide.</p>
+            <div class="scala-row" role="group">
+              <label class="scala-btn"><input type="radio" name="ind_att_4" value="1"><span>1<small>Mai</small></span></label>
+              <label class="scala-btn"><input type="radio" name="ind_att_4" value="2"><span>2<small>Raramente</small></span></label>
+              <label class="scala-btn"><input type="radio" name="ind_att_4" value="3"><span>3<small>Occas.</small></span></label>
+              <label class="scala-btn"><input type="radio" name="ind_att_4" value="4"><span>4<small>Freq.</small></span></label>
+              <label class="scala-btn"><input type="radio" name="ind_att_4" value="5"><span>5<small>Molto</small></span></label>
+              <label class="scala-btn"><input type="radio" name="ind_att_4" value="6"><span>6<small>Sempre</small></span></label>
+            </div>
+            <textarea class="note-field" placeholder="Note facoltative (max 280 caratteri)…" maxlength="280" rows="2"></textarea>
+          </div>
+          <div class="indicatore-card" data-indicatore="È presente un atteggiamento di fiducia reciproca nel provare e sperimentare.">
+            <p class="indicatore-text">È presente un atteggiamento di fiducia reciproca nel provare e sperimentare.</p>
+            <div class="scala-row" role="group">
+              <label class="scala-btn"><input type="radio" name="ind_att_5" value="1"><span>1<small>Mai</small></span></label>
+              <label class="scala-btn"><input type="radio" name="ind_att_5" value="2"><span>2<small>Raramente</small></span></label>
+              <label class="scala-btn"><input type="radio" name="ind_att_5" value="3"><span>3<small>Occas.</small></span></label>
+              <label class="scala-btn"><input type="radio" name="ind_att_5" value="4"><span>4<small>Freq.</small></span></label>
+              <label class="scala-btn"><input type="radio" name="ind_att_5" value="5"><span>5<small>Molto</small></span></label>
+              <label class="scala-btn"><input type="radio" name="ind_att_5" value="6"><span>6<small>Sempre</small></span></label>
+            </div>
+            <textarea class="note-field" placeholder="Note facoltative (max 280 caratteri)…" maxlength="280" rows="2"></textarea>
+          </div>
+        </div>
+      </section>
+
+      <!-- CLIMA -->
+      <section class="elemento-section elem-clima" data-elemento="Clima">
+        <div class="elemento-header">
+          <div class="elemento-deco">
+            <span class="edeco edeco-rect"></span>
+            <span class="edeco edeco-circle"></span>
+          </div>
+          <div>
+            <span class="elemento-tag">05</span>
+            <h2 class="elemento-title">Clima</h2>
+          </div>
+        </div>
+        <div class="indicatori-list">
+          <div class="indicatore-card" data-indicatore="Nel gruppo si respira fiducia e rispetto reciproco.">
+            <p class="indicatore-text">Nel gruppo si respira fiducia e rispetto reciproco.</p>
+            <div class="scala-row" role="group">
+              <label class="scala-btn"><input type="radio" name="ind_cli_1" value="1"><span>1<small>Mai</small></span></label>
+              <label class="scala-btn"><input type="radio" name="ind_cli_1" value="2"><span>2<small>Raramente</small></span></label>
+              <label class="scala-btn"><input type="radio" name="ind_cli_1" value="3"><span>3<small>Occas.</small></span></label>
+              <label class="scala-btn"><input type="radio" name="ind_cli_1" value="4"><span>4<small>Freq.</small></span></label>
+              <label class="scala-btn"><input type="radio" name="ind_cli_1" value="5"><span>5<small>Molto</small></span></label>
+              <label class="scala-btn"><input type="radio" name="ind_cli_1" value="6"><span>6<small>Sempre</small></span></label>
+            </div>
+            <textarea class="note-field" placeholder="Note facoltative (max 280 caratteri)…" maxlength="280" rows="2"></textarea>
+          </div>
+          <div class="indicatore-card" data-indicatore="I membri si supportano nei momenti di difficoltà.">
+            <p class="indicatore-text">I membri si supportano nei momenti di difficoltà.</p>
+            <div class="scala-row" role="group">
+              <label class="scala-btn"><input type="radio" name="ind_cli_2" value="1"><span>1<small>Mai</small></span></label>
+              <label class="scala-btn"><input type="radio" name="ind_cli_2" value="2"><span>2<small>Raramente</small></span></label>
+              <label class="scala-btn"><input type="radio" name="ind_cli_2" value="3"><span>3<small>Occas.</small></span></label>
+              <label class="scala-btn"><input type="radio" name="ind_cli_2" value="4"><span>4<small>Freq.</small></span></label>
+              <label class="scala-btn"><input type="radio" name="ind_cli_2" value="5"><span>5<small>Molto</small></span></label>
+              <label class="scala-btn"><input type="radio" name="ind_cli_2" value="6"><span>6<small>Sempre</small></span></label>
+            </div>
+            <textarea class="note-field" placeholder="Note facoltative (max 280 caratteri)…" maxlength="280" rows="2"></textarea>
+          </div>
+          <div class="indicatore-card" data-indicatore="Le divergenze vengono affrontate in modo costruttivo.">
+            <p class="indicatore-text">Le divergenze vengono affrontate in modo costruttivo.</p>
+            <div class="scala-row" role="group">
+              <label class="scala-btn"><input type="radio" name="ind_cli_3" value="1"><span>1<small>Mai</small></span></label>
+              <label class="scala-btn"><input type="radio" name="ind_cli_3" value="2"><span>2<small>Raramente</small></span></label>
+              <label class="scala-btn"><input type="radio" name="ind_cli_3" value="3"><span>3<small>Occas.</small></span></label>
+              <label class="scala-btn"><input type="radio" name="ind_cli_3" value="4"><span>4<small>Freq.</small></span></label>
+              <label class="scala-btn"><input type="radio" name="ind_cli_3" value="5"><span>5<small>Molto</small></span></label>
+              <label class="scala-btn"><input type="radio" name="ind_cli_3" value="6"><span>6<small>Sempre</small></span></label>
+            </div>
+            <textarea class="note-field" placeholder="Note facoltative (max 280 caratteri)…" maxlength="280" rows="2"></textarea>
+          </div>
+          <div class="indicatore-card" data-indicatore="Le persone si sentono libere di esprimere emozioni e punti di vista.">
+            <p class="indicatore-text">Le persone si sentono libere di esprimere emozioni e punti di vista.</p>
+            <div class="scala-row" role="group">
+              <label class="scala-btn"><input type="radio" name="ind_cli_4" value="1"><span>1<small>Mai</small></span></label>
+              <label class="scala-btn"><input type="radio" name="ind_cli_4" value="2"><span>2<small>Raramente</small></span></label>
+              <label class="scala-btn"><input type="radio" name="ind_cli_4" value="3"><span>3<small>Occas.</small></span></label>
+              <label class="scala-btn"><input type="radio" name="ind_cli_4" value="4"><span>4<small>Freq.</small></span></label>
+              <label class="scala-btn"><input type="radio" name="ind_cli_4" value="5"><span>5<small>Molto</small></span></label>
+              <label class="scala-btn"><input type="radio" name="ind_cli_4" value="6"><span>6<small>Sempre</small></span></label>
+            </div>
+            <textarea class="note-field" placeholder="Note facoltative (max 280 caratteri)…" maxlength="280" rows="2"></textarea>
+          </div>
+          <div class="indicatore-card" data-indicatore="Il gruppo mostra energia positiva e motivazione condivisa.">
+            <p class="indicatore-text">Il gruppo mostra energia positiva e motivazione condivisa.</p>
+            <div class="scala-row" role="group">
+              <label class="scala-btn"><input type="radio" name="ind_cli_5" value="1"><span>1<small>Mai</small></span></label>
+              <label class="scala-btn"><input type="radio" name="ind_cli_5" value="2"><span>2<small>Raramente</small></span></label>
+              <label class="scala-btn"><input type="radio" name="ind_cli_5" value="3"><span>3<small>Occas.</small></span></label>
+              <label class="scala-btn"><input type="radio" name="ind_cli_5" value="4"><span>4<small>Freq.</small></span></label>
+              <label class="scala-btn"><input type="radio" name="ind_cli_5" value="5"><span>5<small>Molto</small></span></label>
+              <label class="scala-btn"><input type="radio" name="ind_cli_5" value="6"><span>6<small>Sempre</small></span></label>
+            </div>
+            <textarea class="note-field" placeholder="Note facoltative (max 280 caratteri)…" maxlength="280" rows="2"></textarea>
+          </div>
+        </div>
+      </section>
+
+      <!-- AZIONI FORM -->
+      <div class="form-actions">
+        <p id="validationMsg" class="validation-msg" hidden>⚠ Compila tutti i punteggi e i campi obbligatori prima di inviare.</p>
+        <div class="actions-row">
+          <button type="button" class="btn btn-secondary" onclick="salvaBozza()">💾 Salva bozza</button>
+          <button type="button" class="btn btn-danger" onclick="cancellaDati()">🗑 Cancella tutto</button>
+          <button type="submit" class="btn btn-primary" id="submitBtn">✦ Analizza con AI</button>
+        </div>
+      </div>
+    </form>
+
+    <!-- RISULTATO AI -->
+    <section id="risultatoSection" class="risultato-section" hidden>
+      <div class="risultato-header">
+        <span class="risultato-tag">Analisi AI</span>
+        <h2 class="risultato-title">Lettura della griglia</h2>
+        <p class="risultato-meta" id="risultatoMeta"></p>
+      </div>
+      <div id="risultatoBody" class="risultato-body"></div>
+      <div class="risultato-actions">
+        <button class="btn btn-secondary" onclick="copiaAnalisi()">📋 Copia testo</button>
+        <button class="btn btn-secondary" onclick="scaricaAnalisi()">⬇ Scarica .txt</button>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <p>Strumento formativo · Osservazione del gruppo · <span id="footerYear"></span></p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
