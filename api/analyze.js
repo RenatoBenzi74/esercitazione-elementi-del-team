@@ -2,7 +2,7 @@
 // Variabili ambiente richieste: ANTHROPIC_API_KEY, RESEND_API_KEY, NOTIFY_EMAIL
 
 export default async function handler(req, res) {
-  if (req.method !== 'POST') {
+  if (req.method !== 'POST') {h
     return res.status(405).json({ error: 'Metodo non consentito' });
   }
 
@@ -61,7 +61,7 @@ Gli elementi o indicatori con punteggi più bassi o in contraddizione: cosa potr
         'anthropic-version': '2023-06-01'
       },
       body: JSON.stringify({
-        model: 'claude-sonnet-4-20250514',
+                model: 'claude-sonnet-4-6',
         max_tokens: 2000,
         system: systemPrompt,
         messages: [{ role: 'user', content: payload }]
